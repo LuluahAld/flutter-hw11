@@ -220,11 +220,23 @@ class productShow extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    Text(
-                      product.price,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w700,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          product.price.toString(),
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        const Text(
+                          ' SAR',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        )
+                      ],
                     ),
                   ],
                 ),
@@ -260,12 +272,23 @@ class productShow extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(30, 12, 30, 0),
                     child: Align(
                       alignment: Alignment.bottomLeft,
-                      child: Text(
-                        product.price,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
+                      child: Row(
+                        children: [
+                          Text(
+                            product.price.toString(),
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const Text(
+                            ' SAR',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          )
+                        ],
                       ),
                     ),
                   )
@@ -279,7 +302,6 @@ class productShow extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 cart.add(product);
-                print(cart[0].name);
               },
               child: Container(
                 decoration: const BoxDecoration(

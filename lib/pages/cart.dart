@@ -107,7 +107,9 @@ class cartP extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Text(product.price)
+                  Row(
+                    children: [Text(product.price.toString()), const Text(' SAR')],
+                  )
                 ],
               ),
             ),
@@ -144,6 +146,25 @@ class nonemptyCart extends StatelessWidget {
             product: products,
           ),
         const SizedBox(
+          height: 20,
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(19, 0, 19, 0),
+          child: Row(
+            children: [
+              const Text(
+                'Total: ',
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+              ),
+              AddingTotal(cart: cart),
+              const Text(
+                ' SAR',
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(
           height: 40,
         ),
         Padding(
@@ -168,6 +189,24 @@ class nonemptyCart extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+}
+
+class AddingTotal extends StatelessWidget {
+  final List cart;
+  Products products = Products('', '', 0);
+  AddingTotal({super.key, required this.cart});
+
+  @override
+  Widget build(BuildContext context) {
+    double total = 0;
+    for (products in cart) {
+      (total += products.price);
+    }
+    return Text(
+      total.toString(),
+      style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
     );
   }
 }
